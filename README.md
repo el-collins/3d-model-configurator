@@ -25,10 +25,10 @@ Welcome to the 3D Shoe Customizer! This project is a web application that allows
 
 ## Screenshots
 
-![Home Screen](./screenshots/home.png)
+![Home Screen](![alt text](image.png))
 *Home Screen*
 
-![Customization Screen](./screenshots/customization.png)
+![Customization Screen](![alt text](image-1.png))
 *Customization Screen*
 
 ## Getting Started
