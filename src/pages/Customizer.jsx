@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
 
-import state, { fetchCustomization } from "../store";
+import state, { fetchCustomization, resetColors } from "../store";
 import { EditorTabs } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
 import { ColorPicker, CustomButton, Tab } from "../components";
@@ -45,6 +45,13 @@ const Customizer = ({ userId }) => {
             className="absolute z-10 top-5 right-5"
             {...fadeAnimation}
           >
+            {/* A button that will restore back on the colors to default */}
+            <CustomButton
+              type="outline"
+              title="Default Colour"
+              handleClick={resetColors}
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm mr-3"
+            />
             <CustomButton
               type="filled"
               title="Go Back"
