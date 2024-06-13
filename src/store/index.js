@@ -61,8 +61,11 @@ export const saveCustomization = async (userId) => {
   }
 };
 
-export const resetColors = () => {
+export const resetColors = async (userId) => {
   state.items = { ...defaultColors };
+  if (userId) {
+    await saveCustomization(userId);
+  }
 };
 
 export default state;

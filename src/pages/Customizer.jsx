@@ -9,13 +9,14 @@ import { ColorPicker, CustomButton, Tab } from "../components";
 
 const Customizer = ({ userId }) => {
   const snap = useSnapshot(state);
+  const [activeEditorTab, setActiveEditorTab] = useState(EditorTabs[0].name);
+  const [isColorPickerVisible, setIsColorPickerVisible] = useState(false);
 
   useEffect(() => {
     fetchCustomization(userId); // Fetch customization on load
   }, [userId]);
 
 
-  const [activeEditorTab, setActiveEditorTab] = useState(EditorTabs[0].name);
 
   return (
     <AnimatePresence>
@@ -32,11 +33,18 @@ const Customizer = ({ userId }) => {
                   <Tab
                     key={tab.name}
                     tab={tab}
-                    handleClick={() => setActiveEditorTab(tab.name)}
+                    handleClick={() => {
+                      if (activeEditorTab === tab.name) {
+                        setIsColorPickerVisible(!isColorPickerVisible);
+                      } else {
+                        setActiveEditorTab(tab.name);
+                        setIsColorPickerVisible(true);
+                      }
+                    }}
                   />
                 ))}
 
-                <ColorPicker userId={userId} />
+                {isColorPickerVisible && <ColorPicker userId={userId} />}
               </div>
             </div>
           </motion.div>
@@ -49,7 +57,7 @@ const Customizer = ({ userId }) => {
             <CustomButton
               type="outline"
               title="Default Colour"
-              handleClick={resetColors}
+              handleClick={() => resetColors(userId)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm mr-3"
             />
             <CustomButton
