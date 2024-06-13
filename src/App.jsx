@@ -3,14 +3,15 @@ import CanvasModel from "./canvas";
 import { auth } from "./firebaseConfig";
 import Customizer from "./pages/Customizer";
 import Home from "./pages/Home";
-import { fetchCustomization } from "./store";
+import state, { fetchCustomization } from "./store";
 import { onAuthStateChanged } from "firebase/auth";
-import { div, log } from "three/examples/jsm/nodes/Nodes.js";
 import { CustomButton } from "./components";
+import { useSnapshot } from "valtio";
+
 
 export default function App() {
   const [user, setUser] = useState(null);
-  console.log();
+  const snap = useSnapshot(state);
 
   // onAuthStateChanged(auth, (currentUser) => {
   //   if (currentUser) {
@@ -44,7 +45,7 @@ export default function App() {
           className="w-8 h-8 object-contain"
         />
 
-        {user && (
+        {user && snap.intro && (
           // logout button
           <div>
             <CustomButton

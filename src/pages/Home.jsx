@@ -17,7 +17,6 @@ const Home = ({ user }) => {
   const snap = useSnapshot(state);
   const [loading, setLoading] = useState(true);
   const [authMode, setAuthMode] = useState("login"); // 'login' or 'register'
-  console.log(snap.color);
 
   return (
     <AnimatePresence>
