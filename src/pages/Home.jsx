@@ -24,7 +24,7 @@ const Home = ({ user }) => {
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-              <h1 style={{color: snap.color}} className={`head-text`}>
+              <h1 className={`head-text`}>
                 LET'S <br className="xl:block hidden" /> DO IT.
               </h1>
             </motion.div>
